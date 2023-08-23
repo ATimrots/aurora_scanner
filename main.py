@@ -33,10 +33,11 @@ def ntfy(message, tag = 'star_struck'):
 
     requests.post("https://ntfy.sh/atimrots-aurora-alerts", data=message, headers=h)
 
-service = Service(executable_path='/usr/bin/chromedriver')
-options = webdriver.ChromeOptions()
+# service = Service(executable_path='/usr/bin/chromedriver')
+# service = Service()
+# options = webdriver.ChromeOptions()
 # options.add_argument("--window-size=1920,1200")
-driver = webdriver.Chrome(service=service, options=options)
+driver = webdriver.Chrome()
 
 driver.get("https://www.gi.alaska.edu/monitors/aurora-forecast")
 
