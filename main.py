@@ -12,7 +12,7 @@ import time
 load_dotenv()
 
 APP_ENV = os.getenv('APP_ENV')
-THRESHOLD = os.getenv('KP_INDEX_THRESHOLD')
+THRESHOLD = int(os.getenv('KP_INDEX_THRESHOLD', 5))
 
 class attribute_has_changed(object):
   def __init__(self, locator, val, attr):
