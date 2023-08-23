@@ -12,6 +12,7 @@ import time
 load_dotenv()
 
 APP_ENV = os.getenv('APP_ENV')
+THRESHOLD = os.getenv('KP_INDEX_THRESHOLD')
 
 class attribute_has_changed(object):
   def __init__(self, locator, val, attr):
@@ -52,8 +53,6 @@ if APP_ENV == 'production':
 driver = webdriver.Chrome()
 
 driver.get("https://www.gi.alaska.edu/monitors/aurora-forecast")
-
-THRESHOLD = 3
 
 print(driver.title)
 print(driver.current_url)
