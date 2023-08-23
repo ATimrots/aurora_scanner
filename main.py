@@ -7,11 +7,6 @@ import requests
 import time
 
 class attribute_has_changed(object):
-  """An expectation for checking that an element has a particular css class.
-
-  locator - used to find the element
-  returns the WebElement once it has the particular css class
-  """
   def __init__(self, locator, val, attr):
     self.locator = locator
     self.val = val
@@ -33,7 +28,7 @@ class attribute_has_changed(object):
 def ntfy(message, tag = 'star_struck'):
     h = {
         "Tags": tag,
-        "Actions": "view, Open portal, https://www.gi.alaska.edu/monitors/aurora-forecast"
+        # "Actions": "view, Open portal, https://www.gi.alaska.edu/monitors/aurora-forecast"
     }
 
     requests.post("https://ntfy.sh/atimrots-aurora-alerts", data=message, headers=h)
@@ -77,7 +72,7 @@ else:
     current_date = driver.find_element(By.ID, 'local-date')
     date_text = current_date.text
 
-    for i in range(26):
+    for i in range(7):
         next_button.click()
         wait = WebDriverWait(driver, 5)
         date = wait.until(attribute_has_changed((By.ID, 'local-date'), date_text, 'text'))
