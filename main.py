@@ -54,35 +54,36 @@ driver = webdriver.Chrome()
 
 driver.get("https://www.gi.alaska.edu/monitors/aurora-forecast")
 
-print(driver.title)
-print(driver.current_url)
+print('Title: '+driver.title)
+print('Url: '+driver.current_url)
 
 img_src = driver.find_element(By.XPATH, '//*[@id="alaska"]').get_attribute('src')
-
 to_europe = driver.find_element(By.XPATH, '//*[@id="eu-map"]')
+next_button = driver.find_element(By.XPATH, '//*[@id="right-nav"]')
+current_date = driver.find_element(By.ID, 'local-date').text
 
 driver.execute_script("arguments[0].click();", to_europe)
 
 wait = WebDriverWait(driver, 5)
 img_elem = wait.until(attribute_has_changed((By.XPATH, '//*[@id="alaska"]'), img_src, 'src'))
 
+print('Image of opened region: '+img_elem.get_attribute('src'))
+
+next_button.click()
+wait = WebDriverWait(driver, 5)
+today_date = wait.until(attribute_has_changed((By.ID, 'local-date'), current_date, 'text')).text
 kp_index = driver.find_element(By.XPATH, '//*[@id="kp_value"]').text
 
-print("EUROPE KP INDEX: "+kp_index)
-print('EUROPE Image '+img_elem.get_attribute('src'))
+print("EUROPE KP INDEX: "+kp_index+' ON "'+today_date+'"')
 
 if int(kp_index) >= THRESHOLD:
-    message = ('You can see aurora today! KP INDEX: '+kp_index).encode(encoding='utf-8')
-    # print('You should go out and find some Aurora today!')
-
+    message = ('Hoorah! You can see aurora today! KP INDEX: '+kp_index).encode(encoding='utf-8')
+    print(message)
     ntfy(message)
 else:
     print('You can\'t see aurora today!')
 
-    next_button = driver.find_element(By.XPATH, '//*[@id="right-nav"]')
-
-    current_date = driver.find_element(By.ID, 'local-date')
-    date_text = current_date.text
+    date_text = today_date
 
     for i in range(7):
         next_button.click()
@@ -93,8 +94,8 @@ else:
         kp_index = driver.find_element(By.XPATH, '//*[@id="kp_value"]').text
 
         if int(kp_index) >= THRESHOLD:
-            message = ('Next aurora after '+str(i)+' days on '+date_text+' KP INDEX: '+kp_index).encode(encoding='utf-8')
-            # print(message)
+            message = ('Next aurora will be visible after '+str(i)+' days on "'+date_text+'" with KP INDEX: '+kp_index).encode(encoding='utf-8')
+            print(message)
             ntfy(message, 'calendar')
             break
 
