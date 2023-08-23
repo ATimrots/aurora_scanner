@@ -1,10 +1,17 @@
+from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
+from dotenv import load_dotenv
+import os
 import requests
 import time
+
+load_dotenv()
+
+APP_ENV = os.getenv('APP_ENV')
 
 class attribute_has_changed(object):
   def __init__(self, locator, val, attr):
@@ -37,6 +44,11 @@ def ntfy(message, tag = 'star_struck'):
 # service = Service()
 # options = webdriver.ChromeOptions()
 # options.add_argument("--window-size=1920,1200")
+
+if APP_ENV == 'production':
+    display = Display(visible=0, size=(800, 600))
+    display.start()
+
 driver = webdriver.Chrome()
 
 driver.get("https://www.gi.alaska.edu/monitors/aurora-forecast")
