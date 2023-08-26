@@ -27,3 +27,6 @@ To receive reports, install [Ntfy](https://ntfy.sh/) on your mobile phone and su
 ```
 0 7 * * * /usr/bin/python3 ~/path/to/script/main.py
 ```
+
+## Disclaimer
+Take into account this project should run on one instance, because it uses one ntfy channel (topic) and notifications can overlay otherwise.
