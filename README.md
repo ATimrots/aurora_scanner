@@ -13,7 +13,7 @@ A small program to extract aurora predictions using web scraping technique with 
 
 ## Receiving forecasts
 
-Install [Ntfy](https://ntfy.sh/) on your mobile phone and subscribe topic `atimrots-aurora-alerts`
+To receive reports, install [Ntfy](https://ntfy.sh/) on your mobile phone and subscribe topic `atimrots-aurora-alerts`
 
 ## Prerequisites [Ubuntu 22.04]
 1. Installed Google Chrome (tested on v.116.0.5845.96)
