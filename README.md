@@ -13,4 +13,17 @@ A small program to extract aurora predictions using web scraping technique with 
 
 ## Receiving forecasts
 
-Install [Ntfy](https://ntfy.sh/) on your mobile phone and subscribe topic `atimrots-aurora-alerts`.
+Install [Ntfy](https://ntfy.sh/) on your mobile phone and subscribe topic `atimrots-aurora-alerts`
+
+## Prerequisites [Ubuntu 22.04]
+1. Installed Google Chrome (tested on v.116.0.5845.96)
+1. (optional) Chrome driver https://googlechromelabs.github.io/chrome-for-testing/
+
+## Installation [Ubuntu 22.04]
+1. Clone git project on your server `git clone git@github.com:ATimrots/aurora_scanner.git .` (ssh example)
+1. Install required Python packages from requirements.txt `pip install -r requirements.txt`
+1. Run app manually `python3 main.py` to test if no errors
+1. Set up schedule `crontab -e`. Example, daily at 7am:
+```
+0 7 * * * /usr/bin/python3 ~/path/to/script/main.py
+```
