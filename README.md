@@ -22,7 +22,7 @@ To receive reports, install [Ntfy](https://ntfy.sh/) on your mobile phone and su
 ## Installation [Ubuntu 22.04]
 1. Clone git project on your server `git clone git@github.com:ATimrots/aurora_scanner.git .` (ssh example)
 1. Install required Python packages from requirements.txt `pip install -r requirements.txt`
-1. Configure .env variables. For `APP_ENV` use value `production` when you are using cron to run program in backroung. If it's set as production, then virtual display will be used instead of real Google Chrome display. You can adjust `KP_INDEX` as you wish to get the best results in your region. Example, in Latvia good starting point is KP 5. If it combines with enought dark night and no clouds, then it is high possibility to catch some Aurora. `NTFY_TOPIC` is used to know where to send notifications (See "Receiving forecasts" section).
+1. Configure .env variables. For `APP_ENV` use value `production` when you are using cron to run program in backroung. If it's set as production, then virtual display will be used instead of real Google Chrome display. You can adjust `KP_INDEX_THRESHOLD` as you wish to get the best results in your region. Example, in Latvia good starting point is KP 5. If it combines with enought dark night and no clouds, then it is high possibility to catch some Aurora. `NTFY_TOPIC` is used to know where to send notifications (See "Receiving forecasts" section).
 1. Run app manually `python3 main.py` to test if no errors
 1. Set up schedule `crontab -e`. Example, daily at 7am:
 ```
