@@ -36,4 +36,4 @@ NTFY_TOPIC=
 ```
 
 ## Disclaimer
-Take into account if you run this project on different instances, with same ntfy topic, notifications will overlay.
+Take into account, if you run this project on different instances with same ntfy topic, notifications will overlay.
