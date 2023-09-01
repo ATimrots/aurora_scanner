@@ -67,7 +67,7 @@ else:
 
     date_text = today_date
 
-    for i in range(7):
+    for i in range(1, 7):
         driver.execute_script("arguments[0].click();", next_button)
         wait = WebDriverWait(driver, 5)
         date = wait.until(attribute_has_changed((By.ID, 'local-date'), date_text, 'text'))
